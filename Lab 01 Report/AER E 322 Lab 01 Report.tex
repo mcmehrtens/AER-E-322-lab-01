@@ -1,0 +1,174 @@
+% AER E 361 Mission Report Template
+% Spring 2023
+% Template created by Yiqi Liang and Professor Matthew Nelson
+
+% Document Configuration DO NOT CHANGE
+\documentclass[12 pt]{report}
+% --------------------LaTeX Packages---------------------------------
+% The following are packages that are used in this report.
+% DO NOT CHANGE ANY OF THE FOLLOWING OR YOUR REPORT WILL NOT COMPILE
+% -------------------------------------------------------------------
+
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{graphicx}
+\usepackage{graphviz}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color} %for LessIsMore style
+\usepackage{tcolorbox} %for references box
+\usepackage[hmargin=1in,vmargin=1in]{geometry} % use 1 inch margins
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{svg} % Allows for SVG Vector graphics
+\usepackage{textcomp, gensymb} %for degree symbol
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=cyan,
+}
+\usepackage{biblatex}
+\addbibresource{lab-report-bib.bib}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{array}
+
+\usepackage{hologo} %KYR: for \BibTeX
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+% This configures items for code listings in the document
+\usepackage{xcolor}
+
+\usepackage{fancyhdr} % Headers/Footers
+
+\definecolor{commentsColor}{rgb}{0.497495, 0.497587, 0.497464}
+\definecolor{keywordsColor}{rgb}{0.000000, 0.000000, 0.635294}
+\definecolor{stringColor}{rgb}{0.558215, 0.000000, 0.135316}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+ }
+
+ \lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{commentsColor}\textit,    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=tb,	                   	   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{keywordsColor}\bfseries,       % keyword style
+  language=Python,                 % the language of the code (can be overrided per snippet)
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=8pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{commentsColor}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{stringColor}, % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+  columns=fixed                    % Using fixed column width (for e.g. nice alignment)
+}
+
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  xleftmargin=\parindent,
+  language=[x86masm]Assembler,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\itshape\color{purple!40!black},
+}
+
+\lstset{escapechar=@,style=customc}
+
+
+\titlelabel{\thetitle.\quad}
+
+% From here on out you can start editing your document
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\LARGE#1\end{center}
+    \vskip0.5em}%
+}
+
+\title{\textbf{Iowa State University
+\\{\Large Aerospace Engineering}}}
+\subtitle{AER E 322 Lab 01\\
+		  Practice Experiment and Data Analysis}
+\author{Matthew Mehrtens, Peter Mikolitis, and Natsuki Oda}
+
+% Define the headers and footers
+\setlength{\headheight}{70.63135pt}
+\geometry{head=70.63135pt, includehead=true, includefoot=true}
+\fancypagestyle{plain}{
+	\fancyhead{}\fancyfoot{} % clears the headers/footers
+	\fancyhead[L]{\textbf{AER E 322}}
+	\fancyhead[C]{\textbf{Aerospace Structures Laboratory Report}\\
+					 \textbf{Lab 01 Practice Experiment and Data Analysis}\\
+					 Section 4 Group 2\\
+					 Matthew Mehrtens, Peter Mikolitis, and Natsuki Oda\\
+					 \today}
+	\fancyhead[R]{\textbf{Spring 2023}}
+	\fancyfoot[C]{\thepage}
+}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Pre-lab}
+\section{Introduction}
+Aircraft wings undergo oscillations and other random forces while in flight. This lab replicates and analyzes some of the forces and oscillations a wing will experience in flight while also serving as an introduction to the PASCO tool kits and data processing. To simulate the wing, we used a cantilevered aluminum beam, and to generate and measure the oscillations, we used a PASCO tool kit. There were three rounds of testing; each additional round of testing introduced a new variable into the beam movement that changed the shape of the data. The data was collected using the PASCO tool kit and software provided. After the lab, we analyzed and processed the data in Python to how each variable effected the oscillation of the beam.
+
+\section{Objectives}
+
+
+\section{Hypothesis}
+
+
+\chapter{Lab Work}
+\section{Variables}
+
+
+\section{Work Assignments}
+
+
+\section{Materials, Apparatus, and Procedures}
+
+
+\section{Data}
+
+
+\chapter{Conclusion}
+\section{Analysis}
+
+
+\section{Conclusion}
+
+
+\printbibliography[heading=subbibintoc]
+\end{document}
