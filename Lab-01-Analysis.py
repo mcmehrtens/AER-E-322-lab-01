@@ -141,6 +141,11 @@ def main():
     plt.legend(loc="best")
     plt.grid()
 
+    # Print some statistics
+    print("Max Displacement of Run 1: %g mm or %g mm" % (position["run1"].min(), position["run1"].max()))    
+    print("Max Displacement of Run 2: %g mm or %g mm" % (position["run2"].min(), position["run2"].max()))    
+    print("Max Displacement of Run 3: %g mm or %g mm" % (position["run3"].min(), position["run3"].max()))   
+
     # Show all the graphs
     plt.show()
 
