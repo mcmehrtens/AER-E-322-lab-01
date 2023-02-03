@@ -140,11 +140,11 @@
 \maketitle
 \tableofcontents
 
-\chapter{Pre-lab}
-\section{Introduction}
-Aircraft wings undergo oscillations and other random forces while in flight. This lab replicates and analyzes some of the forces and oscillations a wing will experience in flight while also serving as an introduction to the PASCO tool kits and data processing. To simulate the wing, we used a cantilevered aluminum beam, and to generate and measure the oscillations, we used a PASCO tool kit. There were three rounds of testing; each additional round of testing introduced a new variable into the beam movement that changed the shape of the data. The data was collected using the PASCO tool kit and software provided. After the lab, we analyzed and processed the data in Python to how each variable effected the oscillation of the beam.
+\chapter{Pre-Lab} \label{pre-lab}
+\section{Introduction} \label{introduction}
+Aircraft wings undergo oscillations and other random forces while in flight. This lab replicates and analyzes some of the forces and oscillations a wing will experience in flight while also serving as an introduction to the PASCO tool kits and data processing. To simulate the wing, we used a cantilevered aluminum beam, and to generate and measure the oscillations, we used a PASCO tool kit---specifically the PASCO wave driver, displacement sensor and motion sensor. There were three rounds of testing; each additional round of testing introduced a new variable into the beam movement that changed the shape of the data. The data was collected using the PASCO tool kit and software provided. After the lab, we analyzed and processed the data in Python to how each variable effected the oscillation of the beam.
 
-\section{Objectives}
+\section{Objectives} \label{objectives}
 During this lab, our primary objectives were to:
 \begin{enumerate}
 	\item Learn how to record data under dynamic conditions and analyze or post-process the data.
@@ -152,27 +152,34 @@ During this lab, our primary objectives were to:
 	\item Gain familiarity with the PASCO tool kit and the PASCO Capstone software.
 \end{enumerate}
 
-\section{Hypothesis}
+\section{Hypothesis} \label{hypothesis}
+\subsection{Test 1} \label{test_1}
+We predict this test will provide the cleanest data of the three tests. Since the only force acting on the beam should be from the wave driver, we expect the displacement graph to shown a uniform and steady wave---matching the oscillations of the wave driver. The data from this test should closely match the oscillations of an airplane wing in very steady flight.
+
+\subsection{Test 2} \label{test_2}
+This test adds a spring-loaded weight to the cantilevered beam. Due to the oscillations of the spring loaded weight, we expect to see sudden highs and lows in the data corresponding with when the spring-loaded weight is in compression or tension respectively. The data from this test should demonstrate the oscillations of the wing in steady flight if there is an additional oscillatory or vibrational force simultaneously acting on the wing.
+
+\subsection{Test 3} \label{test_3}
+This test is similar to Test 2 (see section \ref{test_2}) except a third significant force has been introduced. Due to the addition of arbitrary impulses being applied by hand to the free end of the beam, we expect the data to show large peaks and dips in the data correlated with the timing of the impulses. The data from this test should demonstrate the oscillations of real flight as described in section \ref{test_2} but also how the wing might react during periods of high turbulence where sudden, large impulses may act on the wing.
+
+\chapter{Lab Work} \label{lab_work}
+\section{Variables} \label{variables}
 
 
-\chapter{Lab Work}
-\section{Variables}
+\section{Work Assignments} \label{work_assignments}
 
 
-\section{Work Assignments}
+\section{Materials, Apparatus, and Procedures} \label{m_a_p}
 
 
-\section{Materials, Apparatus, and Procedures}
+\section{Data} \label{data}
 
 
-\section{Data}
+\chapter{Conclusion} \label{conclusion-chapter}
+\section{Analysis} \label{analysis}
 
 
-\chapter{Conclusion}
-\section{Analysis}
-
-
-\section{Conclusion}
+\section{Conclusion} \label{conclusion-section}
 
 
 \printbibliography[heading=subbibintoc]
