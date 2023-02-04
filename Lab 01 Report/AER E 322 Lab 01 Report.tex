@@ -344,7 +344,7 @@ To generate the line of best fit, we first observed that the data in our graphs 
 
 \lstinputlisting[label={code:sin_lobf}, caption={The \texttt{sin{\textunderscore}lobf()} function from our Python data processing script. This function generates a sinusoidal line of best fit for data that is generally sinusoidal. It uses an FFT algorithm from the \texttt{scipy} package and an optimization function from the \texttt{numpy} package. The function was modified from unsym's post on StackOverflow \cite{sin_lobf}.}, language=Python, firstline=174, lastline=197]{src/Lab-01-Analysis.py}
 
-We also tested using a piece-wise line of best fit generator, \ie the line of best was generated for smaller consecutive domains rather than the entire \qtyrange{0}{15}{\s} of data. The graphs generated using this method can be found in Appendix \ref{piece-wise_lobf_graphs}. The entirety of the data processing script is shown in Appendix \ref{code}.
+We also tested using a piece-wise line of best fit generator, \ie the line of best was generated for smaller consecutive domains rather than the entire \qtyrange{0}{15}{\s} of data. The graphs generated using this method can be found in Appendix \ref{piece-wise_lobf_graphs}. The entirety of the data processing script is shown in Appendix \ref{lab-01-analysis.py}.
 
 The following sections discuss the data from Tests \num{1}--\num{3}. For conciseness, only the most pertinent graphs are discussed below. All the graphs are included in Appendix \ref{graphs} for reference.
 
@@ -456,7 +456,7 @@ As described in Section \ref{procedures-test_1}, Test \num{1} was the only test 
 From these graphs, it is clear the displacement sensor's polling rate was too slow. In retrospect, the reason is clear. As shown from Figure \ref{fig:run_1-smoothed-zoomed} and as described in Section \ref{procedures-setup}, the wave driver was forcing the beam to oscillate at a rate of approximately \qty{10}{\hertz}, but the polling rate of the displacement sensor was \qty{5}{\hertz}. In other words, the resolution of the displacement sensor was too low to accurately measure the true displacement of the beam. For this reason, the displacement sensor was omitted from the second and third tests.
 \end{displayquote}
 
-The motion sensor, however, is a much more precise measurement tool. From the smoothed data in Figure \ref{fig:run_1-smoothed-zoomed}, it is possible to count the number of cycles that occur in one second, and if done correctly, you will find there almost exactly \num{10} cycles each second. The line of best fit---which may not excel at matching the sinusoidal center at any given time---from the raw data in \ref{fig:run_1-raw-zoomed} correctly estimates the frequency of the beam's displacement to be \qty{9.999}{\hertz} (see Appendix \ref{regular_lobf_output} for full script output). This quantitative result matches the qualitative counting result, confirming that even despite the noise and variation in sinusoidal center, the beam was indeed oscillating at \qty{10}{\hertz} as expected, and the motion sensor was correctly recording the oscillations.
+The motion sensor, however, is a much more precise measurement tool. From the smoothed data in Figure \ref{fig:run_1-smoothed-zoomed}, it is possible to count the number of cycles that occur in one second, and if done correctly, you will find there almost exactly \num{10} cycles each second. The line of best fit---which may not excel at matching the sinusoidal center at any given time---from the raw data in \ref{fig:run_1-raw-zoomed} correctly estimates the frequency of the beam's displacement to be \qty{9.999}{\hertz} (see Appendix \ref{output} for full script output). This quantitative result matches the qualitative counting result, confirming that even despite the noise and variation in sinusoidal center, the beam was indeed oscillating at \qty{10}{\hertz} as expected, and the motion sensor was correctly recording the oscillations.
 
 \subsection{Data Processing} \label{analysis-data_processing}
 A detailed discussion of how we smoothed the data and generated the line of best fit can be found in Section \ref{data}. We used multi-pass rolling mean algorithms to smooth the data with assistance from the \texttt{pandas} Python library. When attempting to generate the line of best fit, we had troubles using the \texttt{scipy.optimize()} function. It seemed that the subtle variations in frequency due to the external forces being applied or even just stray vibrations in the apparatus were enough for the \texttt{scipy.optimize()} function to fail.
@@ -651,11 +651,38 @@ This was an important lesson to learn: when measuring at such a precise scale, i
 
 \chapter{Code} \label{code}
 
+\section{Lab-01-Analysis.py} \label{lab-01-analysis.py}
+\lstinputlisting[caption={Our data analysis script, \texttt{Lab-01-Analysis.py}.},language=Python]{src/Lab-01-Analysis.py}
 
-\section{Regular LOBF Output} \label{regular_lobf_output}
-
-
-\section{Piece-Wise LOBF Output} \label{piece-wise_lobf_output}
-
+\section{Output} \label{output}
+\begin{verbatim}
+Amplitude: -0.911702 mm
+Frequency: 9.99878 Hz
+LOBF: f(t) = -0.911702sin(62.8242 * t + -0.423851) + -0.458014
+----------------------------------------------------------
+Amplitude: 0.513407 mm
+Frequency: 9.99862 Hz
+LOBF: f(t) = 0.513407sin(62.8232 * t + 0.842215) + -0.459104
+----------------------------------------------------------
+Amplitude: -1.77111 mm
+Frequency: 9.99939 Hz
+LOBF: f(t) = -1.77111sin(62.828 * t + -0.26507) + -0.339128
+----------------------------------------------------------
+Amplitude: 0.873077 mm
+Frequency: 9.99919 Hz
+LOBF: f(t) = 0.873077sin(62.8267 * t + 0.372368) + -0.338719
+----------------------------------------------------------
+Amplitude: -1.54725 mm
+Frequency: 9.99753 Hz
+LOBF: f(t) = -1.54725sin(62.8163 * t + -0.348804) + 0.325918
+----------------------------------------------------------
+Amplitude: 0.870026 mm
+Frequency: 9.99747 Hz
+LOBF: f(t) = 0.870026sin(62.816 * t + 0.912736) + 0.322807
+----------------------------------------------------------
+Max Displacement of Run 1: -5.3458 mm or 2.9268 mm
+Max Displacement of Run 2: -6.2847 mm or 4.9003 mm
+Max Displacement of Run 3: -5.3 mm or 9.8693 mm
+\end{verbatim}
 
 \end{document}
