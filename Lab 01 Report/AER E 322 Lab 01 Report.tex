@@ -105,7 +105,6 @@
 
 \lstset{escapechar=@,style=customc}
 
-
 \titlelabel{\thetitle.\quad}
 
 % From here on out you can start editing your document
@@ -121,6 +120,10 @@
 \subtitle{AER E 322 Lab 01\\
 		  Practice Experiment and Data Analysis}
 \author{Matthew Mehrtens, Peter Mikolitis, and Natsuki Oda}
+
+\newcommand{\etal}{\textit{et al}., }
+\newcommand{\ie}{\textit{i}.\textit{e}., }
+\newcommand{\eg}{\textit{e}.\textit{g}., }
 
 % Define the headers and footers
 \setlength{\headheight}{70.63135pt}
@@ -189,7 +192,7 @@ The time intervals at which the PASCO motion sensor or displacement sensor poll 
 The number of elements after a given element used to calculate a rolling mean while data processing. A small smoothing span will better preserve the shape of the data; whereas, a larger smoothing span will better reduce noise and outliers.
 
 \subsubsection{Time} \label{variables-independent_variables-time}
-Each test was run for exactly \qty{15}{s}, measured in \qty{0.01}{s} intervals.
+Each test was run for exactly \qty{15}{\s}, measured in \qty{0.01}{\s} intervals.
 
 \subsection{Dependent Variables} \label{variables-dependent_variables}
 \subsubsection{Displacement/Position} \label{variables-dependent_variables-displacement-position}
@@ -200,7 +203,8 @@ The line of best fit or fit curve is a normalized curve matching the raw or smoo
 
 \section{Work Assignments} \label{work_assignments}
 Refer to Table \ref{table:work_assignments} for the distribution of work during this lab.
-\begin{table}[ht]
+
+\begin{table}[!ht]
 \caption{Work assignments for lab 01.}
 \begin{center}
 	\begin{tabular}{| c | c | c | c |}
@@ -266,72 +270,155 @@ The materials required for this lab include: cantilever aluminum beam, spring, w
 \section{Apparatus} \label{apparatus}
 Figure \ref{fig:lab_apparatus} shows the fully assembled lab apparatus. For Test 1, the weight was removed from the spring. For Tests 2 and 3, the weight was added back to the apparatus and the displacement sensor---the needle-like device on top of the beam---was removed.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=6in]{images/Lab_Apparatus}
 \caption{Lab apparatus completely set up, including the spring, weight, and displacement sensor. Image from the \textit{Lab 1 Practice Experiment and Data Analysis} manual \cite{lab_procedures}. Copyright 2023 by Thomas Chiou.}
 \label{fig:lab_apparatus}
 \end{figure}
 
-As shown in Figure \ref{fig:lab_apparatus}, the left side of the beam is fixed to the board and the right side is attached to the wave driver with string. The rectangular, gray box in the foreground is the PASCO 850 Universal Interface, and the blue device in the midground is the motion sensor. The motion sensor must be positioned directly underneath the piece of white foam taped to the bottom of the beam with at least \qty{15}{cm} between the sensor and the foam.
+As shown in Figure \ref{fig:lab_apparatus}, the left side of the beam is fixed to the board and the right side is attached to the wave driver with string. The rectangular, gray box in the foreground is the PASCO 850 Universal Interface, and the blue device in the midground is the motion sensor. The motion sensor must be positioned directly underneath the piece of white foam taped to the bottom of the beam with at least \qty{15}{\cm} between the sensor and the foam.
 
 \section{Procedures} \label{procedures}
 \subsection{Setup} \label{procedures-setup}
-Assemble the apparatus as described in Section \ref{apparatus}. Ensure that the styrofoam reflector plate is at least \qty{15}{cm} away from the motion sensor before running any tests. Launch the PASCO Capstone software, and turn on the PASCO 850 Universal Interface. Check that both the ``needle'' displacement sensor and motion sensors are recognized by the software. Once the sensors are recognized, configure the software to display two graphs ``by selecting the corresponding icon from the on-screen template'' \cite{lab_procedures}. Next, click on each axis to label the graphs, and set the y-label of the displacement sensor graph to ``displacement'' and ``position'' for the motion sensor graph. For both graphs, the x-label will be ``time''. Refer to Figure \ref{fig:pasco_main_page} to see how the graph layout should look.
+Assemble the apparatus as described in Section \ref{apparatus}. Ensure that the styrofoam reflector plate is at least \qty{15}{\cm} away from the motion sensor before running any tests. Launch the PASCO Capstone software, and turn on the PASCO 850 Universal Interface. Check that both the ``needle'' displacement sensor and motion sensors are recognized by the software. Once the sensors are recognized, configure the software to display two graphs ``by selecting the corresponding icon from the on-screen template'' \cite{lab_procedures}. Next, click on each axis to label the graphs, and set the y-label of the displacement sensor graph to ``displacement'' and ``position'' for the motion sensor graph. For both graphs, the x-label will be ``time''. Refer to Figure \ref{fig:pasco_main_page} to see how the graph layout should look.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=5in]{images/PASCO_Main_Page}
 \caption{The graph screen of the PASCO Capstone software fully configured for this lab. Image from the \textit{Lab 1 Practice Experiment and Data Analysis} manual \cite{lab_procedures}. Copyright 2023 by Thomas Chiou.}
 \label{fig:pasco_main_page}
 \end{figure}
 
-Set up the wave driver by clicking the ``Signal Generator'' icon on the left-side of the screen.  Set the waveform to ``Sine'', sweep type to ``Off'', frequency to \qty{10}{Hz}, amplitude to \qty{10}{V}, and select ``Auto'' at the bottom of the window. For reference, compare your ``Signal Generator'' window to Figure \ref{fig:wave_driver_setup}.
+Set up the wave driver by clicking the ``Signal Generator'' icon on the left-side of the screen.  Set the waveform to ``Sine'', sweep type to ``Off'', frequency to \qty{10}{\hertz}, amplitude to \qty{10}{\volt}, and select ``Auto'' at the bottom of the window. For reference, compare your ``Signal Generator'' window to Figure \ref{fig:wave_driver_setup}.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=4in]{images/Wave_Driver_Setup}
 \caption{The wave driver or ``Signal Generator'' configuration window. Image from the \textit{Lab 1 Practice Experiment and Data Analysis} manual \cite{lab_procedures}. Copyright 2023 by Thomas Chiou.}
 \label{fig:wave_driver_setup}
 \end{figure}
 
-Next, at the bottom of the screen select ``Recording Condition'', then select ``Stop Condition''. Set ``Condition Type'' to ``Time Based'', and set the time to \qty{15}{s}. The ``Recording Condition'' window will look similar to Figure \ref{fig:stop_conditions}. 
+Next, at the bottom of the screen select ``Recording Condition'', then select ``Stop Condition''. Set ``Condition Type'' to ``Time Based'', and set the time to \qty{15}{\s}. The ``Recording Condition'' window will look similar to Figure \ref{fig:stop_conditions}. 
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=4in]{images/Stop_Conditions}
 \caption{The ``Stop Conditions'' configuration window. Image from the \textit{Lab 1 Practice Experiment and Data Analysis} manual \cite{lab_procedures}. Copyright 2023 by Thomas Chiou.}
 \label{fig:stop_conditions}
 \end{figure}
 
-At the bottom of the screen, select ``Motion Sensor'', and set the sampling frequency to \qty{100}{Hz}. The sensor can be zeroed by selecting the icon to the right of the sampling frequency field. Use the same process to set up the displacement sensor, except set the sampling frequency to \qty{5}{Hz}. To zero the displacement sensor, click the physical O/I button on the sensor. The sensors should be zeroed before each round of testing.
+At the bottom of the screen, select ``Motion Sensor'', and set the sampling frequency to \qty{100}{\hertz}. The sensor can be zeroed by selecting the icon to the right of the sampling frequency field. Use the same process to set up the displacement sensor, except set the sampling frequency to \qty{5}{\hertz}. To zero the displacement sensor, click the physical O/I button on the sensor. The sensors should be zeroed before each round of testing.
 
 Finally, navigate through the following menus: ``Data Summary'' icon on the left column of the screen $\rightarrow$ Motion Sensor $\rightarrow$ Position (m) $\rightarrow$ select the gear symbol $\rightarrow$ Numerical Format $\rightarrow$ change Number Style to Significant Figures $\rightarrow$ set the Number of Significant Figures to \num{5}. Follow the exact same process for the displacement sensor.
 
 \subsection{Test 1} \label{procedures-test_1}
-For Test 1, we will only utilize the wave driver. Take the hanging weight off the beam before starting and remain clear of the apparatus during operation. Ensure the displacement sensor is making good contact with the beam and approximately halfway depressed. Check the motion sensor is directly under the styrofoam reflector plate with at least \qty{15}{cm} of buffer. The string that attaches the beam to the axle socket of the wave driver should be taut. Lastly, double-check that the connector tip of the wave driver ``is firmly seated inside the axle socket'' \cite{lab_procedures}. Zero both sensors before running the test, then, in the PASCO Capstone software, click ``Record'' to run the test. Let the test run for the entire \qty{15}{s} duration. 
+For Test 1, we will only utilize the wave driver. Take the hanging weight off the beam before starting and remain clear of the apparatus during operation. Ensure the displacement sensor is making good contact with the beam and approximately halfway depressed. Check the motion sensor is directly under the styrofoam reflector plate with at least \qty{15}{\cm} of buffer. The string that attaches the beam to the axle socket of the wave driver should be taut. Lastly, double-check that the connector tip of the wave driver ``is firmly seated inside the axle socket'' \cite{lab_procedures}. Zero both sensors before running the test, then, in the PASCO Capstone software, click ``Record'' to run the test. Let the test run for the entire \qty{15}{\s} duration. 
 
 \subsection{Test 2} \label{procedures-test_2}
 Before beginning Test 2, remove the displacement sensor from the beam and add the hanging weight to the spring. Begin the test as described in Section \ref{procedures-test_1}. As the test begins, a group member will pull the weight down and release it, allowing the spring-weight system to oscillate for the duration of the test. Be careful not to pull the weight down too hard.
 
 \subsection{Test 3} \label{procedures-test_3}
-For Test 3, leave the apparatus as it was configured for Test 2 in Section \ref{procedures-test_2}. Start the test as described in Section \ref{procedures-test_1}. After beginning the test, in addition to pulling down and releasing the hanging weight, a group member will randomly tap the free end of the cantilevered beam up or down every \numrange{2}{3} seconds for the duration of the test.
+For Test 3, leave the apparatus as it was configured for Test 2 in Section \ref{procedures-test_2}. Start the test as described in Section \ref{procedures-test_1}. After beginning the test, in addition to pulling down and releasing the hanging weight, a group member will randomly tap the free end of the cantilevered beam up or down every \qtyrange{2}{3}{\s}for the duration of the test.
 
 \subsection{Cleanup} \label{procedures-cleanup}
 Using the ``File'' menu in the PASCO Capstone software, save the experiment data to a \texttt{.txt} or \texttt{.csv} file. Transfer the data to a flash drive for post-processing and analysis.
 
 \section{Data} \label{data}
-\subsection{Test 1} \label{data-test_1}
+All data analysis was done with Python. The following packages were used for importing, smoothing, and processing the data:
 
+\begin{itemize}
+	\item \texttt{pandas} (\url{https://pandas.pydata.org/})
+	\item \texttt{numpy} (\url{https://numpy.org/})
+	\item \texttt{matplotlib} (\url{https://matplotlib.org/})
+	\item \texttt{scipy} (\url{https://scipy.org/})
+\end{itemize}
+
+The data was in a \text{.csv} format which the \texttt{pandas} Python package had no difficulty importing and parsing. To smooth the data, we used the \href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.rolling.html}{\texttt{pandas.DataFrame.rolling()}} and \href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html}{\texttt{pandas.DataFrame.mean()}} functions. The \texttt{.rolling()} function selects a subset of the elements, and the \texttt{.mean()} function calculates the mean of that subset. See Listing \ref{code:smooth_df} for the function from our Python script that smoothed the data.
+
+\lstinputlisting[label={code:smooth_df}, caption={The \texttt{smooth{\textunderscore}df()} function from our Python data processing script. This function smooths a \href{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html}{\texttt{pandas.DataFrame}} object once or in multiple passes as defined by the \texttt{smooth} argument.}, language=Python, firstline=160, lastline=170]{src/Lab-01-Analysis.py}
+
+To generate the line of best fit, we first observed that the data in our graphs looked generally sinusoidal. To generate and graph a sinusoidal line of best fit, our best option was to use the \href{https://docs.scipy.org/doc/scipy/tutorial/optimize.html}{\texttt{scipy.optimize()}} function, but since the frequency of the beams displacement curve varied due to the forces we were applying to it---especially in Test 2 and Test 3---the \texttt{scipy.optimize()} function struggled to accurately generate an appropriate line of best fit. Our final solution for generating the line of best fit involved using the \texttt{scipy.optimize()} function and the \href{https://numpy.org/doc/stable/reference/generated/numpy.fft.fftfreq.html}{\texttt{numpy.fft.fftfreq()}} and \href{https://numpy.org/doc/stable/reference/generated/numpy.fft.fft.html}{\texttt{numpy.fft.fft()}} functions which performs a \href{https://en.wikipedia.org/wiki/Fast_Fourier_transform}{Fast Fourier Transform} (FFT) on a \href{https://numpy.org/doc/stable/reference/generated/numpy.array.html}{\texttt{numpy.array}} object. See Listing \ref{code:sin_lobf} for our implementation of the sinusoidal line of best fit function.
+
+\lstinputlisting[label={code:sin_lobf}, caption={The \texttt{sin{\textunderscore}lobf()} function from our Python data processing script. This function generates a sinusoidal line of best fit for data that is generally sinusoidal. It uses an FFT algorithm from the \texttt{scipy} package and an optimization function from the \texttt{numpy} package. The function was modified from unsym's post on StackOverflow \cite{sin_lobf}.}, language=Python, firstline=174, lastline=197]{src/Lab-01-Analysis.py}
+
+We also tested using a piece-wise line of best fit generator, \ie the line of best was generated for smaller domains rather than the entire \qtyrange{0}{15}{\s} of data. The graphs generated using this method can be found in Appendix \ref{graphs}. The entirety of the data processing script is shown in Appendix \ref{code}.
+
+The following sections discuss the data from Tests 1 through 3. For conciseness, only the most pertinent graphs are discussed below. All the graphs are included in Appendix \ref{graphs} for reference.
+
+\subsection{Test 1} \label{data-test_1}
+Shown in Figures \ref{fig:run_1-raw-zoomed} and \ref{fig:run_1-smoothed-zoomed} is the raw data and smoothed data respectively for Test 1. The raw data shows the measurements from the displacement sensor and the motion sensor. The smoothed data omits the raw data from the displacement sensor. For clarity, only the data from \qtyrange{5}{8}{\s} is shown below.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{images/Graphs/Run_1-Raw-Zoomed} % first figure itself
+        \caption{Raw data from Test 1, zoomed to only show \qtyrange{5}{8}{\s}.}
+        \label{fig:run_1-raw-zoomed}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{images/Graphs/Run_1-Smoothed-Zoomed} % second figure itself
+        \caption{Smoothed data from Test 1, zoomed to only show \qtyrange{5}{8}{\s}.}
+        \label{fig:run_1-smoothed-zoomed}
+    \end{minipage}
+\end{figure}
+
+From these graphs, it is clear the displacement sensor's polling rate was too slow. In retrospect, the reason is clear. As shown from Figure \ref{fig:run_1-smoothed-zoomed} and as described in Section \ref{procedures-setup}, the wave driver was forcing the beam to oscillate at a rate of approximately \qty{10}{\hertz}, but the polling rate of the displacement sensor was \qty{5}{\hertz}. In other words, the resolution of the displacement sensor was too low to accurately measure the true displacement of the beam. For this reason, the displacement sensor was omitted from the second and third tests.
 
 \subsection{Test 2} \label{data-test_2}
+Shown in Figures \ref{fig:run_2-raw-zoomed} and \ref{fig:run_2-smoothed-zoomed} is the raw data and smoothed data respectively for Test 2. At the beginning of this run, a force was applied to a weight hanging from a spring connected to the beam, causing the weight to oscillate (see Section \ref{apparatus} and \ref{procedures-setup} for details). For clarity, only the data from \qtyrange{5}{8}{\s} is shown below.
 
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{images/Graphs/Run_2-Raw-Zoomed} % first figure itself
+        \caption{Raw data from Test 2, zoomed to only show \qtyrange{5}{8}{\s}.}
+        \label{fig:run_2-raw-zoomed}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{images/Graphs/Run_2-Smoothed-Zoomed} % second figure itself
+        \caption{Smoothed data from Test 2, zoomed to only show \qtyrange{5}{8}{\s}.}
+        \label{fig:run_2-smoothed-zoomed}
+    \end{minipage}
+\end{figure}
+
+The line of best fit does not account for the secondary oscillations due to the hanging weight---it averages between the high and low secondary oscillations--but from looking at the motion sensor measurements shown in Figure \ref{fig:run_2-smoothed-zoomed}, you can observe the periods of oscillation where the weight was applying a downwards force on the beam, \eg from \qtyrange{5.2}{5.5}{\s}.
 
 \subsection{Test 3} \label{data-test_3}
+Shown in Figures \ref{fig:run_3-raw-zoomed} and \ref{fig:run_3-smoothed-zoomed} is the raw data and smoothed data respectively for Test 3. At the beginning of this run, a force was applied to a weight hanging from a spring connected to the beam causing the weight to oscillate. At random times during the run, a member from our group applied an arbitrary impulse with their hand to the end of the beam (see Section \ref{procedures-test_3} for details). For clarity, only the data from \qtyrange{5}{8}{\s} is shown below.
 
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{images/Graphs/Run_3-Raw-Zoomed} % first figure itself
+        \caption{Raw data from Test 3, zoomed to only show \qtyrange{5}{8}{\s}.}
+        \label{fig:run_3-raw-zoomed}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{images/Graphs/Run_3-Smoothed-Zoomed} % second figure itself
+        \caption{Smoothed data from Test 3, zoomed to only show \qtyrange{5}{8}{\s}.}
+        \label{fig:run_3-smoothed-zoomed}
+    \end{minipage}
+\end{figure}
+
+We observe from Figures \ref{fig:run_3-raw-zoomed} and \ref{fig:run_3-smoothed-zoomed} the same secondary oscillations we observed in Test 2 (Section \ref{data-test_2}. In addition to the secondary oscillations, we also note the large spikes at \qty{5.75}{\s} and \qty{7.75}{\s}. These spikes were due to the arbitrary impulses being applied to the beam by one of our group members.
 
 \chapter{Conclusion} \label{conclusion-chapter}
 \section{Analysis} \label{analysis}
+% As seen in test 1, the data near the beginning of the test is not concurrent with remainder of the test, therefore the data seen is taken from about five seconds into the test. The middle of the data set has the node closer to zero than in the first five seconds of the test. Test 1 shows a very clear and clean sinusoidal wave as compared to the other tests. The node of the wave in test 1 stays mostly consistent through the duration of the test which implies that there is only one regularly occurring force oscillating the beam.
+
+% Test 2 data shows the introduction of a second oscillating body which clearly effected the data. While the weight was oscillating on the beam, the beam was observed to oscillate at two different frequencies simultaneously. As seen by the data for test 2, the amplitude of the fit curve is roughly 0.5 mm larger than test 1 in the raw data. Along with this, the motion sensor curve is observed to oscillate (not just the oscillation from the wave driver). This data tells us that having a second form of oscillation will cause peaks/valleys in the wave sensor curve as a whole.
+
+% Test 3 data shows the introduction of outliers. Our group was tasked to tap the beam at random intervals while the test was running to produce some extreme values in the data. The data clearly shows at what moments the beam was tapped because of the much higher amplitude of the wave at those instances. Over all the data looks very similar to test 2 besides the extreme jumps in displacement when the beam was tapped. 
+
+
+\subsection{Sources of Error} \label{analysis-sources_of_error}
 
 
 \section{Conclusion} \label{conclusion-section}
